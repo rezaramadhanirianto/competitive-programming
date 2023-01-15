@@ -1,4 +1,4 @@
-package practice.pastzco;
+package codechef.practice.pastzco;
 
 import java.util.Arrays;
 import java.util.Scanner;
