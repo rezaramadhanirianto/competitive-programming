@@ -58,4 +58,18 @@ public class Main implements Runnable {
     static String readLine() throws IOException {
         return br.readLine().trim();
     }
+
+    static int[] readIntArray(int n) {
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++)
+            res[i] = readInt();
+        return res;
+    }
+
+    static long[] readLongArray(int n) {
+        long[] res = new long[n];
+        for (int i = 0; i < n; i++)
+            res[i] = readLong();
+        return res;
+    }
 }
