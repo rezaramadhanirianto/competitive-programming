@@ -1,4 +1,4 @@
-package codeforces.div4_round871;
+package codeforces.round871_4;
 
 import java.io.*;
 import java.util.*;
