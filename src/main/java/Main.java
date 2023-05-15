@@ -24,7 +24,26 @@ public class Main implements Runnable {
         }
         out.close();
     }
+    
+    public static void sort(int[] arr) {
+        //because Arrays.sort() uses quicksort
+        //Collections.sort() uses merge sort
+        ArrayList<Integer> ls = new ArrayList<Integer>();
+        for (int x : arr) ls.add(x);
+        Collections.sort(ls);
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = ls.get(i);
+    }
 
+    public static void sortReverse(int[] arr) {
+        ArrayList<Integer> ls = new ArrayList<Integer>();
+        for (int x : arr) ls.add(x);
+        Collections.sort(ls, Collections.reverseOrder());
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = ls.get(i);
+    }
+    
+    // fast scanner
     public static String next() {
         try {
             while (!st.hasMoreTokens()) {
