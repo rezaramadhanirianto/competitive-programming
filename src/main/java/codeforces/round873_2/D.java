@@ -1,3 +1,5 @@
+package codeforces.round873_2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,14 +7,15 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Main implements Runnable {
+// After
+public class D implements Runnable {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
     static StringTokenizer st = new StringTokenizer("");
 
     public static void main(String[] args) {
-        new Thread(null, new Main(), "Main", 1<<28).start();
+        new Thread(null, new D(), "Main", 1<<28).start();
     }
 
     @Override
@@ -63,7 +66,7 @@ public class Main implements Runnable {
         }
         return sb.toString();
     }
-    
+
     public static void sort(int[] arr) {
         //because Arrays.sort() uses quicksort
         //Collections.sort() uses merge sort
@@ -81,7 +84,7 @@ public class Main implements Runnable {
         for (int i = 0; i < arr.length; i++)
             arr[i] = ls.get(i);
     }
-    
+
     // fast scanner
     public static String next() {
         try {
