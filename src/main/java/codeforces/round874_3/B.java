@@ -1,4 +1,3 @@
-package codeforces.round874_3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,10 +24,10 @@ public class B implements Runnable {
             int n = readInt(), k = readInt();
             int[] weather = readIntArray(n);
             int[] real = readIntArray(n);
-            Integer[] idx = new Integer[n];
+            int[] idx = new int[n];
             for(int i = 0; i < n; i++) idx[i] = i;
-            Arrays.sort(real);
-            Arrays.sort(idx, (a,b) -> weather[a] - weather[b]);
+            sort(real);
+            sort(idx, (a,b) -> weather[a] - weather[b]);
 
             int[] res = new int[n];
             for(int i = 0; i < n; i++){
@@ -60,6 +59,16 @@ public class B implements Runnable {
         ArrayList<Integer> ls = new ArrayList<Integer>();
         for (int x : arr) ls.add(x);
         Collections.sort(ls);
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = ls.get(i);
+    }
+
+    public static void sort(int[] arr, Comparator<Integer> comparator) {
+        //because Arrays.sort() uses quicksort
+        //Collections.sort() uses merge sort
+        ArrayList<Integer> ls = new ArrayList<Integer>();
+        for (int x : arr) ls.add(x);
+        Collections.sort(ls, comparator);
         for (int i = 0; i < arr.length; i++)
             arr[i] = ls.get(i);
     }
