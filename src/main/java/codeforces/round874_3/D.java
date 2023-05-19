@@ -1,3 +1,5 @@
+package codeforces.round874_3;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,7 +7,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Main implements Runnable {
+// after
+public class D implements Runnable {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
@@ -13,11 +16,55 @@ public class Main implements Runnable {
 
     // code goes here
     void solve(){
+        int n = readInt();
+        int[] arr = readIntArray(n);
+        if(n == 1){
+            out.println(arr[0]);
+            return;
+        }
 
+        int maxIdx = 1;
+        for(int i = 1; i < n; i++){
+            if(arr[i] > arr[maxIdx]) maxIdx = i;
+        }
+
+        int secondIdx = maxIdx - 1;
+        while(secondIdx - 1 >= 0 && arr[secondIdx-1] > arr[0]) secondIdx--; // smaller index from 0 to secondIdx
+
+        List<Integer> list1 = new ArrayList<>();
+        for(int i = maxIdx; i < n; i++) list1.add(arr[i]);
+        for(int i = maxIdx - 1; i >= secondIdx; i--) list1.add(arr[i]);
+        for(int i = 0; i < secondIdx; i++) list1.add(arr[i]);
+
+        int right = n-1, left = 0;
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(arr[right--]);
+        while(left <= right){
+            if(arr[left] < arr[right]){
+                list2.add(arr[right--]);
+            } else break;
+        }
+        while(left <= right) list2.add(arr[left++]);
+
+        List<Integer> res = compare(list1, list2);
+
+        StringBuilder sb = new StringBuilder();
+        for(int r: res){
+            sb.append(r).append(' ');
+        }
+        out.println(sb.toString());
+    }
+
+    private static List<Integer> compare(List<Integer> one, List<Integer> two) {
+        for (int i = 0; i < one.size(); ++i) {
+            if (one.get(i) > two.get(i)) return one;
+            else if (one.get(i) < two.get(i)) return two;
+        }
+        return one;
     }
 
     public static void main(String[] args) {
-        new Thread(null, new Main(), "Main", 1<<28).start();
+        new Thread(null, new D(), "Main", 1<<28).start();
     }
 
     @Override
