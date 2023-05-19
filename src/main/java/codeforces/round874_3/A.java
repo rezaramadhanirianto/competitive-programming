@@ -1,3 +1,5 @@
+package codeforces.round874_3;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,14 +7,14 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Main implements Runnable {
+public class A implements Runnable {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
     static StringTokenizer st = new StringTokenizer("");
 
     public static void main(String[] args) {
-        new Thread(null, new Main(), "Main", 1<<28).start();
+        new Thread(null, new A(), "Main", 1<<28).start();
     }
 
     @Override
@@ -21,23 +23,16 @@ public class Main implements Runnable {
 
         while(tests-- > 0){
             int n = readInt();
-            int[] arr = readIntArray(n);
-            int max = 1, min = 0;
+            String str = readLine();
 
-            for(int i = 0; i < n; i++){
-                int[] temp = arr.clone();
-
+            Set<String> set = new HashSet<>();
+            for(int i = 0; i < n-1; i++){
+                String curr = str.charAt(i) + "" + str.charAt(i+1);
+                set.add(curr);
             }
-
+            out.println(set.size());
         }
         out.close();
-    }
-
-    boolean isLarger(int[] arr1, int[] arr2){
-        for(int i = 0; i < arr1.length; i++){
-            if(arr1[i] < arr2[i]) return false;
-        }
-        return true;
     }
 
     static String tes(Deque<int[]> deq){
@@ -47,7 +42,7 @@ public class Main implements Runnable {
         }
         return sb.toString();
     }
-    
+
     public static void sort(int[] arr) {
         //because Arrays.sort() uses quicksort
         //Collections.sort() uses merge sort
@@ -65,7 +60,7 @@ public class Main implements Runnable {
         for (int i = 0; i < arr.length; i++)
             arr[i] = ls.get(i);
     }
-    
+
     // fast scanner
     public static String next() {
         try {
